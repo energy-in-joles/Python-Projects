@@ -21,17 +21,17 @@ def ma_clock(z):
     v = time.strftime('%H:%M:%S', time.gmtime(z))
     return v
 
-arrival = randint(60,600) #gap between arrivals in seconds
-arrival += opening_time
-while arrival <= closing_time:
-    ar.append(arrival)
-    arrival += randint(60,600)
+arrival_time = randint(60,600) #gap between arrivals in seconds
+arrival_time += opening_time
+while arrival_time <= closing_time:
+    ar.append(arrival_time)
+    arrival_time += randint(60,600)
 
 else:
-    completion_time = randint(270,330) #time taken to complete activity
+    completion_time = randint(270,330) #time taken to complete service
     com.append((completion_time + ar[0]))
     for x in range(1,len(ar)):
-        completion_time = randint(270,330)
+        complete = randint(270,330)
         if com[x] < ar[x]:
             com.append((completion_time + ar[x]))
             wait.append(0)
@@ -60,8 +60,3 @@ else:
             if n < wait_cap: 
                 counter += 1
         print("Percentage of customers who waited 5 minutes or less: " + str(round((counter/len(wait) * 100), 1)) + "%")
-            
-        
-
-    
-    
