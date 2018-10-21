@@ -13,13 +13,9 @@ closing_time = 75600
 
 wait_cap = 300 #generate percentage of customers who waited less than this duration (in seconds)
 
-def ar_clock(y):
+def clock(y):
     n = time.strftime('%H:%M:%S', time.gmtime(y))
     return n
-
-def ma_clock(z):
-    v = time.strftime('%H:%M:%S', time.gmtime(z))
-    return v
 
 arrival_time = randint(60,600) #gap between arrivals in seconds
 arrival_time += opening_time
@@ -44,12 +40,12 @@ else:
     while min(com_ar) < closing_time: #closing time used to displace used numbers
         if com_ar.index(min(com_ar)) >= int(len(com_ar)/2):
             com_counter += 1
-            print(ma_clock(min(com_ar)) + "  Customer %d has been served" % (com_counter))
+            print(clock(min(com_ar)) + "  Customer %d has been served" % (com_counter))
             com_ar[com_ar.index(min(com_ar))] = closing_time
 		
         else:
             ar_counter += 1
-            print(ar_clock(min(com_ar)) + "  Customer %d arrived." % (ar_counter))
+            print(clock(min(com_ar)) + "  Customer %d arrived." % (ar_counter))
             com_ar[com_ar.index(min(com_ar))] = closing_time
 
     else:
